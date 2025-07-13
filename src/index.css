@@ -1,22 +1,48 @@
 /* src/index.css */
-/* index.css or App.css */
-* {
-  font-family: 'Poppins', sans-serif;
+
+/* 1. Reset & global box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+/* 2. Font + body background */
 body {
-  margin: 0;
+  font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
   background: black;
 }
+
+/* 3. Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-section {
-  scroll-margin-top: 100px; /* Adjust this to match your navbar height */
+/* 4. Constrain the overall layout */
+#root {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
+/* 5. Section spacing + scroll offset for in-page links */
+section {
+  scroll-margin-top: 100px; /* adjust if your navbar height changes */
+  padding: 2rem 0;
+}
+
+/* 6. Hero tweaks (no more full-screen!) */
+.hero {
+  height: auto;       /* let it grow only as tall as its content */
+  padding: 2rem 0;     /* just a bit of breathing room */
+  position: relative;  
+  z-index: 1;          /* layer above the background */
+}
+
+/* 7. Galaxy background + zoom animation */
 .background {
   position: fixed;
   top: 0;
@@ -31,13 +57,11 @@ section {
 }
 
 @keyframes zoom {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.05); }
 }
+
+/* 8. Nav link underline on hover */
 nav a:hover .underline {
   width: 100%;
 }
