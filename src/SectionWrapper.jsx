@@ -1,15 +1,15 @@
-// src/components/SectionWrapper.jsx
-import React from "react";
+// src/SectionWrapper.jsx
+import React from 'react';
 
-export default function SectionWrapper({ children, id }) {
+export default function SectionWrapper({ id, children }) {
   return (
     <section
       id={id}
       style={{
-        padding: "4rem 1.5rem",
-        maxWidth: "1200px",
-        margin: "0 auto",
-        color: "white",
+        padding: '4rem 1.5rem',
+        maxWidth: '1200px',
+        margin: '0 auto',
+        color: '#fff'
       }}
     >
       {children}

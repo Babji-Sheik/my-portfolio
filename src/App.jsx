@@ -1,40 +1,32 @@
+// src/App.jsx
+import React from 'react';
+import './App.css';
 import Stars from './Stars';
-import React, { useState } from "react";
-
-import './App.css'; // Ensure this imports the CSS with the .background class
-import UniverseCanvas from "./UniverseCanvas";
+import UniverseCanvas from './UniverseCanvas';
 import Hero from './Hero';
-import Navbar from "./Navbar";
+import Navbar from './Navbar';
 import About from './About';
 import Studies from './Studies';
 import Expertise from './Expertise';
 import Technologies from './Technologies';
 import Projects from './Projects';
-import Experience from './Experiences';
+import Experiences from './Experiences';
 import Contact from './Contact';
-function App() {
-  const [showNavbar, setShowNavbar] = useState(false);
-
+export default function App() {
   return (
-    <div>
-      <div className="background"></div>
+    <>
+      <div className="background" />
       <Stars />
       <UniverseCanvas />
-      <Hero/>
-      <Navbar/>
+      <Hero />
+      <Navbar />
       <About />
       <Studies />
       <Expertise />
       <Technologies />
       <Projects />
-      <Experience />
+      <Experiences />
       <Contact />
-      {/* Add more sections as needed */}
-      <div className="content">
-        {/* Your main content here */}
-      </div>
-    </div>
+    </>
   );
 }
-
-export default App;
