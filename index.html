@@ -5,6 +5,16 @@
   <link rel="icon" href="/galaxy.jpg" type="image/svg+xml"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Babji Sheik</title>
+
+  <!-- → GA4 Global site tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RN1G9T5PZG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RN1G9T5PZG', { send_page_view: false });
+    // ↓ disable the automatic page_view so we can fire them manually on route change
+  </script>
 </head>
 <body>
   <div id="root"></div>
