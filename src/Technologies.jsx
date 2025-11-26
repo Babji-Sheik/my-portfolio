@@ -1,125 +1,90 @@
 // src/Technologies.jsx
 import React from 'react';
+import './Technologies.css'; // <-- new
 
-const skillCategories = [
+const techCategories = [
   {
-    category: 'Programming Languages',
-    skills: ['Python', 'JavaScript (ES6+)', 'C', 'C++', 'C#', 'Java']
+    category: 'Backend & APIs',
+    items: [
+      { iconClass: 'devicon-java-plain', label: 'Java' },
+      { iconClass: 'devicon-spring-plain', label: 'Spring Boot' },
+      { iconClass: 'devicon-nodejs-plain', label: 'Node.js' },
+      { iconClass: 'devicon-python-plain', label: 'Python' },
+      { iconClass: 'devicon-express-original', label: 'Express' },
+      { iconClass: 'devicon-fastapi-plain', label: 'FastAPI / Flask' },
+      { iconClass: 'devicon-graphql-plain', label: 'GraphQL (when needed)' },
+    ],
   },
   {
-    category: 'Frameworks / Libraries',
-    skills: ['React.js', 'Node.js (Express)', 'Flask', 'Microsoft .NET']
+    category: 'Frontend & Apps',
+    items: [
+      { iconClass: 'devicon-react-original', label: 'React' },
+      { iconClass: 'devicon-angularjs-plain', label: 'Angular' },
+      { iconClass: 'devicon-react-original', label: 'React Native' },
+      { iconClass: 'devicon-react-original', label: 'Expo' },
+      { iconClass: 'devicon-typescript-plain', label: 'TypeScript' },
+    ],
   },
   {
-    category: 'Web Development',
-    skills: ['HTML', 'CSS', 'XML', 'REST / JSON']
+    category: 'Cloud & DevOps',
+    items: [
+      { iconClass: 'devicon-amazonwebservices-original', label: 'AWS' },
+      { iconClass: 'devicon-docker-plain', label: 'Docker' },
+      { iconClass: 'devicon-kubernetes-plain', label: 'Kubernetes' },
+      { iconClass: 'devicon-nginx-original', label: 'NGINX / Proxies' },
+      { iconClass: 'devicon-githubactions-plain', label: 'CI/CD Pipelines' },
+    ],
   },
   {
-    category: 'Databases',
-    skills: ['MySQL', 'MongoDB', 'SQL']
+    category: 'Data & Search',
+    items: [
+      { iconClass: 'devicon-postgresql-plain', label: 'PostgreSQL' },
+      { iconClass: 'devicon-mysql-plain', label: 'MySQL' },
+      { iconClass: 'devicon-mongodb-plain', label: 'MongoDB' },
+      { iconClass: 'devicon-elasticsearch-plain', label: 'Elasticsearch' },
+    ],
   },
   {
-    category: 'Tools & Technologies',
-    skills: ['Selenium', 'Git', 'Cloud Computing']
+    category: 'LLMs & Automation',
+    items: [
+      { iconClass: 'devicon-openai-plain', label: 'OpenAI / LLMs' },
+      { iconClass: 'devicon-python-plain', label: 'ML / Data Pipelines' },
+      { iconClass: 'devicon-zapier-plain', label: 'Zapier / Make / n8n' },
+    ],
   },
   {
-    category: 'Cloud Platforms',
-    skills: ['AWS', 'GCP', 'Azure']
+    category: 'CRM & Integrations',
+    items: [
+      { iconClass: 'devicon-salesforce-plain', label: 'Salesforce' },
+      { iconClass: 'devicon-hubspot-plain', label: 'HubSpot' },
+      { iconClass: 'devicon-sap-plain', label: 'SAP' },
+      { iconClass: 'devicon-apachekafka-plain', label: 'Events / Webhooks' },
+    ],
   },
-  {
-    category: 'Development Practices',
-    skills: ['Agile (Scrum)', 'Data Structures', 'OO Design', 'Design Patterns', 'Unit Testing']
-  },
-  {
-    category: 'AI / Machine Learning',
-    skills: ['Machine Learning', 'AI Techniques', 'Object Detection']
-  },
-  {
-    category: 'SAP Technologies',
-    skills: ['SAP UI5', 'ABAP', 'OData Services']
-  }
 ];
-
-const styles = {
-  section: {
-    padding: '4rem 1rem',
-    scrollMarginTop: '100px'
-  },
-  headerWrapper: {
-    textAlign: 'center',
-    marginBottom: '3rem'
-  },
-  headerTitle: {
-    fontSize: '2.5rem',
-    color: '#fff',
-    margin: 0
-  },
-  headerSubtitle: {
-    color: '#ccc',
-    margin: 0
-  },
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '2rem',
-    maxWidth: '1200px',
-    margin: '0 auto'
-  },
-  card: {
-    backgroundColor: 'rgba(0,0,0,0.85)',
-    padding: '1.5rem',
-    borderRadius: '12px',
-    border: '1px solid #facc15',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-    cursor: 'default'
-  },
-  categoryTitle: {
-    fontSize: '1.25rem',
-    marginBottom: '1rem',
-    color: '#fff'
-  },
-  list: {
-    listStyle: 'none',
-    paddingLeft: 0,
-    lineHeight: 1.8,
-    margin: 0
-  },
-  listItem: {
-    color: '#fff',
-    marginBottom: '0.5rem'
-  }
-};
 
 export default function Technologies() {
   return (
-    <section id="technologies" style={styles.section}>
-      <div style={styles.headerWrapper}>
-        <h1 style={styles.headerTitle}>My Skills</h1>
-        <p style={styles.headerSubtitle}>Organized by Category</p>
-      </div>
-      <div style={styles.grid}>
-        {skillCategories.map(({ category, skills }) => (
-          <div
-            key={category}
-            style={styles.card}
-            onMouseEnter={e => {
-              e.currentTarget.style.transform = 'scale(1.05)';
-              e.currentTarget.style.boxShadow = '0 8px 20px rgba(250,204,21,0.5)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.transform = 'scale(1)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.5)';
-            }}
-          >
-            <h2 style={styles.categoryTitle}>{category}</h2>
-            <ul style={styles.list}>
-              {skills.map(skill => (
-                <li key={skill} style={styles.listItem}>
-                  • {skill}
-                </li>
+    <section id="technologies" className="tech-section">
+      <div className="tech-container">
+        <div className="tech-header">
+          <h1 className="tech-title">Tech Stack I Work With</h1>
+          <p className="tech-subtitle">
+            The tools I use to build AI-enabled, cloud-native platforms and integrations.
+          </p>
+        </div>
+
+        {techCategories.map(({ category, items }) => (
+          <div key={category} className="tech-row">
+            <div className="tech-category-label">{category}</div>
+            <div className="tech-tiles">
+              {items.map(({ iconClass, label }) => (
+                <div key={label} className="tech-tile">
+                  <i className={`${iconClass} colored tech-icon`} />
+                  <div className="tech-tile-label">{label}</div>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
       </div>

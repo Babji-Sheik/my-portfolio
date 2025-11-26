@@ -7,22 +7,23 @@ import * as THREE from 'three';
 function SparkleGalaxy() {
   const ref = useRef();
   const count = 10000;
-  const positions = useMemo(() => new Float32Array(count * 3), [count]);
-  const colors = useMemo(() => new Float32Array(count * 3), [count]);
 
-  // initialize positions and colors once
+  const positions = useMemo(() => new Float32Array(count * 3), []);
+  const colors = useMemo(() => new Float32Array(count * 3), []);
+
+  // initialize star positions & colors
   useMemo(() => {
     for (let i = 0; i < count * 3; i += 3) {
-      positions[i] = (Math.random() - 0.5) * 1000;
+      positions[i]     = (Math.random() - 0.5) * 1000;
       positions[i + 1] = (Math.random() - 0.5) * 1000;
       positions[i + 2] = (Math.random() - 0.5) * 1000;
 
       const c = new THREE.Color().setHSL(Math.random(), 0.8, 0.9);
-      colors[i] = c.r;
+      colors[i]     = c.r;
       colors[i + 1] = c.g;
       colors[i + 2] = c.b;
     }
-  }, [positions, colors]);
+  }, []);
 
   useFrame(() => {
     if (ref.current) {
@@ -32,8 +33,20 @@ function SparkleGalaxy() {
   });
 
   return (
-    <Points ref={ref} positions={positions} colors={colors} stride={3} frustumCulled={false}>
-      <PointMaterial transparent size={0.9} sizeAttenuation depthWrite={false} vertexColors />
+    <Points
+      ref={ref}
+      positions={positions}
+      colors={colors}
+      stride={3}
+      frustumCulled={false}
+    >
+      <PointMaterial
+        transparent
+        size={0.9}
+        sizeAttenuation
+        depthWrite={false}
+        vertexColors
+      />
     </Points>
   );
 }
@@ -43,7 +56,8 @@ function InteractiveGlowFog() {
 
   useFrame(() => {
     if (ref.current) {
-      ref.current.material.opacity = 0.04 + Math.sin(Date.now() * 0.003) * 0.015;
+      ref.current.material.opacity =
+        0.04 + Math.sin(Date.now() * 0.003) * 0.015;
     }
   });
 
@@ -61,19 +75,29 @@ function CameraMotion() {
 
   useEffect(() => {
     const onScroll = () => {
-      targetZ.current = 100 - window.scrollY * 0.1;
+      let z = 100 - window.scrollY * 0.05; // gentler movement
+      // clamp so we never cross the origin
+      const MIN_Z = 40;
+      const MAX_Z = 140;
+      if (z < MIN_Z) z = MIN_Z;
+      if (z > MAX_Z) z = MAX_Z;
+      targetZ.current = z;
     };
+
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useFrame(() => {
-    camera.position.z += (targetZ.current - camera.position.z) * 0.05;
+    camera.position.z = targetZ.current;
+
+    // camera.position.z += (targetZ.current - camera.position.z) * 0.5;
     camera.lookAt(0, 0, 0);
   });
 
   return null;
 }
+
 
 const wrapperStyle = {
   position: 'fixed',
@@ -81,11 +105,9 @@ const wrapperStyle = {
   left: 0,
   width: '100%',
   height: '100%',
-  zIndex: -1,
-  backgroundImage: "url('/galaxy-bg.jpg')",
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat'
+  zIndex: -2,          // Below content, above .background
+  background: 'transparent',
+  pointerEvents: 'none'
 };
 
 const canvasStyle = {
@@ -98,7 +120,10 @@ const canvasStyle = {
 export default function UniverseCanvas() {
   return (
     <div style={wrapperStyle}>
-      <Canvas camera={{ position: [0, 0, 100], fov: 75 }} style={canvasStyle}>
+      <Canvas
+        camera={{ position: [0, 0, 100], fov: 75 }}
+        style={canvasStyle}
+      >
         <ambientLight intensity={0.9} />
         <CameraMotion />
         <InteractiveGlowFog />

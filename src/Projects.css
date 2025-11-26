@@ -1,0 +1,169 @@
+.proj-section {
+  padding: 4.5rem 1.5rem;
+  /* let the star background show */
+  background: transparent;
+  color: #e5e7eb;
+  scroll-margin-top: 100px;
+}
+
+.proj-container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* text only layout for now */
+.proj-layout {
+  display: block;
+}
+
+/* left column */
+.proj-text {
+  max-width: 700px;
+}
+
+/* cleaner number style */
+.proj-index {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(148, 163, 184, 0.45); /* soft gray, no stroke */
+  margin-bottom: 0.75rem;
+}
+
+.proj-title {
+  font-size: 2.2rem;
+  margin: 0 0 0.5rem;
+  font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+}
+
+.proj-domain {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #9ca3af;
+  margin-bottom: 1.25rem;
+}
+
+.proj-summary {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #d1d5db;
+  margin-bottom: 1.1rem;
+}
+
+.proj-highlights {
+  padding-left: 1.1rem;
+  margin: 0 0 1.4rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.proj-highlights li {
+  margin-bottom: 0.3rem;
+}
+
+/* TECH STACK – yellow, no green */
+.proj-tech {
+  font-family: 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #facc15; /* yellow */
+}
+
+/* hide media block for now */
+.proj-media {
+  display: none;
+}
+
+/* nav buttons bottom right */
+.proj-nav {
+  margin-top: 1.8rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.proj-nav button {
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  border: none;
+  background: #ffffff;
+  color: #020617;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.proj-nav button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  background: #ffffff;
+}
+
+/* responsive tweaks */
+@media (max-width: 600px) {
+  .proj-section {
+    padding: 3.5rem 1rem;
+  }
+
+  .proj-title {
+    font-size: 1.8rem;
+  }
+
+  .proj-summary,
+  .proj-highlights,
+  .proj-tech {
+    font-size: 0.9rem;
+  }
+
+  .proj-index {
+    font-size: 3rem;
+  }
+}
+/* ---------- SECTION HEADING ---------- */
+.proj-header {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.proj-main-heading {
+  font-size: 2.7rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: #f9fafb;
+}
+
+.proj-subheading {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ---------- GITHUB BUTTON ---------- */
+.proj-github-wrapper {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.proj-github-button {
+  display: inline-block;
+  padding: 0.75rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  color: #020617;
+  background: #ffffff; /* Yellow */
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.proj-github-button:hover {
+  background: #fde047; /* lighter yellow */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
