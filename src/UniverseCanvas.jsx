@@ -75,23 +75,32 @@ function CameraMotion() {
 
   useEffect(() => {
     const onScroll = () => {
-      let z = 100 - window.scrollY * 0.05; // gentler movement
-      // clamp so we never cross the origin
-      const MIN_Z = 40;
-      const MAX_Z = 140;
-      if (z < MIN_Z) z = MIN_Z;
-      if (z > MAX_Z) z = MAX_Z;
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight;
+      const winHeight = window.innerHeight;
+
+      const maxScroll = Math.max(docHeight - winHeight, 1); // avoid /0
+      const progress = Math.min(Math.max(scrollTop / maxScroll, 0), 1); // 0..1
+
+      const MIN_Z = 40;   // closest we’ll move
+      const MAX_Z = 140;  // farthest back
+
+      // at top (progress=0) → MAX_Z
+      // at bottom (progress=1) → MIN_Z
+      const z = MAX_Z - progress * (MAX_Z - MIN_Z);
       targetZ.current = z;
     };
+
+    // run once on load
+    onScroll();
 
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useFrame(() => {
-    camera.position.z = targetZ.current;
-
-    // camera.position.z += (targetZ.current - camera.position.z) * 0.5;
+    // smooth lerp instead of jumpy snap:
+    camera.position.z += (targetZ.current - camera.position.z) * 0.08;
     camera.lookAt(0, 0, 0);
   });
 
