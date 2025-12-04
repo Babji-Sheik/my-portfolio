@@ -159,64 +159,13 @@ export default function HeroIntro() {
               opacity: 0.9,
             }}
           >
-            <div>
-              <strong>City:</strong> Kansas City, MO, USA
-            </div>
+            
             <div>
               <strong>Email:</strong> sheikbabjims@gmail.com
             </div>
-            <div>
-              <strong>Phone:</strong> +1 660-580-5863
-            </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 1.1 }}
-            style={{
-              marginTop: '2rem',
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '1rem',
-              alignItems: 'center',
-            }}
-          >
-            <a
-              href={resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              download="Babji_Sheik_Resume.docx"
-              style={{ ...buttonStyle, borderColor: CYAN }}
-            >
-              Download Resume
-            </a>
-
-            <div
-              style={{
-                display: 'flex',
-                gap: '0.75rem',
-                marginLeft: '0.5rem',
-              }}
-            >
-              <a
-                href="https://github.com/Babji-Sheik"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: '#f5f9ff' }}
-              >
-                <FaGithub size={22} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/babji-sheik"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: CYAN }}
-              >
-                <FaLinkedin size={22} />
-              </a>
-            </div>
-          </motion.div>
+          
         </div>
 
         {/* right */}

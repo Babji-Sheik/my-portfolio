@@ -9,20 +9,20 @@ import {
 
 const entries = [
   {
-    period: '2025 – Present',
-    title: 'Independent Software & Integration Engineer',
-    place: 'Freelance · Open Source · Personal Platforms',
+    period: '2023 - Present',
+    title: 'Senior Software & Integration Engineer',
+    place: 'Selector AI',
     icon: <FiUser size={22} color='white'/>,
-    type: 'Freelance / Indie',
+    type: 'FULL-TIME',
     points: [
-      'Building small production-ready tools around AI, automation, and integrations.',
-      'Owning end-to-end design of APIs, workflows, and deployments for self-directed work.',
-      'Prototyping CRM and platform features using Salesforce, HubSpot, and event-driven patterns.',
+      'Building production-ready platform capabilities across Kubernetes, service mesh, infrastructure automation, and cloud-native developer tooling.',
+      'Owning end-to-end design of scalable APIs, provisioning workflows, and deployment systems that enable self-service, reliability, and frictionless developer experience.',
+      'Prototyping and integrating platform features using event-driven patterns, cloud services, and automated orchestration to support high-throughput, enterprise-scale environments.',
     ],
     tags: ['AI', 'Integrations', 'APIs'],
   },
   {
-    period: '2023 – 2025',
+    period: '2023',
     title: 'M.S. Computer Science',
     place: 'University of Central Missouri',
     icon: <FiBookOpen size={22} color='white'/>,
